@@ -61,6 +61,12 @@ class DatePickerPage extends React.Component {
             desc: 'This is the initial date value of the component.'
           },
           {
+            name: 'disableYearSelection',
+            type: 'bool',
+            header: 'optional',
+            desc: 'If true, year selection will be disabled, otherwise, year selection will be enabled.'
+          },
+          {
             name: 'formatDate',
             type: 'function',
             header: 'default: formats to M/D/YYYY',
