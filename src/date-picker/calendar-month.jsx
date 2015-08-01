@@ -1,7 +1,7 @@
-let React = require('react');
-let DateTime = require('../utils/date-time');
-let DayButton = require('./day-button');
-let ClearFix = require('../clearfix');
+const React = require('react');
+const DateTime = require('../utils/date-time');
+const DayButton = require('./day-button');
+const ClearFix = require('../clearfix');
 
 
 let CalendarMonth = React.createClass({
@@ -17,7 +17,7 @@ let CalendarMonth = React.createClass({
   },
 
   render() {
-    let styles = {
+    const styles = {
       lineHeight: '32px',
       textAlign: 'center',
       padding: '16px 14px 0 14px',

@@ -1,11 +1,11 @@
-let React = require('react');
-let StylePropable = require('../mixins/style-propable');
-let WindowListenable = require('../mixins/window-listenable');
-let CssEvent = require('../utils/css-event');
-let KeyCode = require('../utils/key-code');
-let Calendar = require('./calendar');
-let Dialog = require('../dialog');
-let FlatButton = require('../flat-button');
+const React = require('react');
+const StylePropable = require('../mixins/style-propable');
+const WindowListenable = require('../mixins/window-listenable');
+const CssEvent = require('../utils/css-event');
+const KeyCode = require('../utils/key-code');
+const Calendar = require('./calendar');
+const Dialog = require('../dialog');
+const FlatButton = require('../flat-button');
 
 
 let DatePickerDialog = React.createClass({
@@ -26,7 +26,6 @@ let DatePickerDialog = React.createClass({
     onDismiss: React.PropTypes.func,
     onShow: React.PropTypes.func,
     shouldDisableDate: React.PropTypes.func,
-    showYearSelector: React.PropTypes.bool,
   },
 
   windowListeners: {
@@ -101,6 +100,7 @@ let DatePickerDialog = React.createClass({
         repositionOnUpdate={false}>
         <Calendar
           ref="calendar"
+          disableYearSelection={this.props.disableYearSelection}
           onDayTouchTap={this._onDayTouchTap}
           initialDate={this.props.initialDate}
           isActive={this.state.isCalendarActive}
@@ -108,7 +108,6 @@ let DatePickerDialog = React.createClass({
           maxDate={this.props.maxDate}
           shouldDisableDate={this.props.shouldDisableDate}
           shouldShowMonthDayPickerFirst={this.state.showMonthDayPicker}
-          showYearSelector={this.props.showYearSelector}
           mode={this.props.mode} />
       </Dialog>
     );

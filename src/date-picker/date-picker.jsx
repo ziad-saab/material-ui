@@ -13,6 +13,7 @@ let DatePicker = React.createClass({
   propTypes: {
     autoOk: React.PropTypes.bool,
     defaultDate: React.PropTypes.object,
+    disableYearSelection: React.PropTypes.bool,
     formatDate: React.PropTypes.func,
     hideToolbarYearChange: React.PropTypes.bool,
     maxDate: React.PropTypes.object,
@@ -24,7 +25,6 @@ let DatePicker = React.createClass({
     onShow: React.PropTypes.func,
     onTouchTap: React.PropTypes.func,
     shouldDisableDate: React.PropTypes.func,
-    showYearSelector: React.PropTypes.bool,
     style: React.PropTypes.object,
     textFieldStyle: React.PropTypes.object,
   },
@@ -37,7 +37,7 @@ let DatePicker = React.createClass({
     return {
       formatDate: DateTime.format,
       autoOk: false,
-      showYearSelector: false,
+      disableYearSelection: false,
     };
   },
 
@@ -63,6 +63,7 @@ let DatePicker = React.createClass({
     let {
       autoOk,
       defaultDate,
+      disableYearSelection,
       formatDate,
       maxDate,
       minDate,
@@ -71,7 +72,6 @@ let DatePicker = React.createClass({
       onFocus,
       onTouchTap,
       onShow,
-      showYearSelector,
       style,
       textFieldStyle,
       ...other,
@@ -88,6 +88,7 @@ let DatePicker = React.createClass({
           onTouchTap={this._handleInputTouchTap}/>
         <DatePickerDialog
           ref="dialogWindow"
+          disableYearSelection={disableYearSelection}
           mode={mode}
           initialDate={this.state.dialogDate}
           onAccept={this._handleDialogAccept}
@@ -96,7 +97,6 @@ let DatePicker = React.createClass({
           minDate={minDate}
           maxDate={maxDate}
           autoOk={autoOk}
-          showYearSelector={showYearSelector}
           shouldDisableDate={this.props.shouldDisableDate}
           hideToolbarYearChange={this.props.hideToolbarYearChange} />
       </div>

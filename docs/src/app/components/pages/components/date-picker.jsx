@@ -15,10 +15,11 @@ class DatePickerPage extends React.Component {
     maxDate.setHours(0,0,0,0);
 
     this.state = {
+      autoOk: false,
+      controlledDate: new Date('2015/07/15'),
+      disableYearSelection: false,
       minDate: minDate,
       maxDate: maxDate,
-      autoOk: false,
-      controlledDate: new Date('2015/07/15')
     };
   }
 
@@ -42,7 +43,8 @@ class DatePickerPage extends React.Component {
       '  hintText="Ranged Date Picker"\n' +
       '  autoOk={this.state.autoOk}\n' +
       '  minDate={this.state.minDate}\n' +
-      '  maxDate={this.state.maxDate} />';
+      '  maxDate={this.state.maxDate}\n' +
+      '  disableYearSelection={this.state.disableYearSelection} />';
 
     let componentInfo = [
       {
@@ -60,6 +62,12 @@ class DatePickerPage extends React.Component {
             header: 'optional',
             desc: 'This is the initial date value of the component. If either `value` or `valueLink` ' +
             'is provided they will override this prop with `value` taking precedence.'
+          },
+          {
+            name: 'disableYearSelection',
+            type: 'bool',
+            header: 'optional',
+            desc: 'If true, year selection will be disabled, otherwise, year selection will be enabled.'
           },
           {
             name: 'disableYearSelection',
@@ -185,7 +193,7 @@ class DatePickerPage extends React.Component {
           autoOk={this.state.autoOk}
           minDate={this.state.minDate}
           maxDate={this.state.maxDate}
-          showYearSelector={this.state.showYearSelector} />
+          disableYearSelection={this.state.disableYearSelection} />
 
         <div style={optionsStyle}>
           <TextField
@@ -204,6 +212,13 @@ class DatePickerPage extends React.Component {
             label="Auto Accept"
             defaultToggled={this.state.autoOk}
             onToggle={this._handleToggle.bind(this)} />
+
+          <Toggle
+            name="disableYearSelection"
+            value="disableYearSelection"
+            label="Disable Year Selection"
+            defaultToggled={this.state.disableYearSelection}
+            onToggel={this._handleToggle.bind(this)} />
         </div>
       </ComponentDoc>
     );
